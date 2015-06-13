@@ -1,0 +1,50 @@
+#content{
+	margin: 0px auto;
+	width:1200;
+	height:150px;
+	background-image: url("./images/login_bg.jpg");
+	font-size: 40px;
+	font-weight: bolder;
+	color: #dd0000;
+	text-align: center;
+	padding-top: 150px;
+	padding-bottom: 100px;
+}
+
+body{
+	margin:0px;
+	text-align: center;
+}
+
+#main{
+	margin:0 auto;
+	background-color: #ffffff;
+	width:1200px;
+	height: auto;
+}
+
+.my_title{
+	width:180px;
+	height:30px;
+	line-height: 30px;
+	background-color: #ffffff;
+	font-size: 20px;
+	font-weight:normal;
+	text-align: left;
+	padding: 5px;
+	font-family: 幼圆;
+	float: left;
+	margin-left: 30px;
+	text-align: center;
+}
+
+#title{
+	width:1200px;
+	height:40px;
+	line-height: 40px;
+	background-color: #ffffff;
+	font-size: 20px;
+	font-weight:normal;
+	text-align: left;
+	font-family: 幼圆;
+}

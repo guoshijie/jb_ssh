@@ -1,0 +1,100 @@
+#title{
+	color:#dd0000;
+	text-indent: 2em;
+	width:985px;
+	height: 30px;
+	line-height: 30px;
+	border:1px solid #aaaaaa;
+	border-bottom: 2px solid #dd0000;
+	font-weight: bold;
+}
+
+.dai_{
+	height: 40px;
+	line-height: 40px;
+	margin-left: 30px;
+}
+
+#content{
+	width:985px;
+	height: 40px;
+	margin-top: 0px;
+	border:1px solid #aaaaaa;
+	border-top: none;
+}
+
+#table_orders{
+	width:987px;
+	height: auto;
+	margin-top: 5px;
+	color: black;
+}
+
+#table_orders a:LINK{
+	color: black;
+	text-decoration: none;
+}
+
+#table_orders a:VISITED{
+	color: black;
+}
+
+#table_orders a:HOVER{
+	color: red;
+	text-decoration: underline;
+}
+
+#table_orders a:ACTIVE{
+	color: blue;
+	text-decoration: none;
+}
+
+#pageNum{
+	width:980px;
+	height:30px;
+	margin-top: 5px;
+	z-index: 20;
+	font-size: 16px;
+	text-align: center;
+	line-height: 30px;
+}
+
+#pageNum a:LINK{
+	text-decoration: underline;
+	color: black;
+}
+
+#pageNum a:VISITED{
+	color: black;
+}
+
+#pageNum a:HOVER{
+	color: red;
+}
+
+#pageNum a:ACTIVE{
+	color: blue;
+}
+
+.pageNow{
+	border: 1px solid black;
+	width:5px;
+	height:5px;
+	padding: 1px 5px;
+	background-color: #FFCA7D;
+}
+.pageOther{
+	border: 1px solid black;
+	width:5px;
+	height:5px;
+	padding: 1px 5px;
+}
+
+#selOrDel{
+	height: 22px;
+	left: 0px;
+	font-size: 16px;
+	padding-top:3px;
+	width: 98%;
+	margin: 0 auto;
+}

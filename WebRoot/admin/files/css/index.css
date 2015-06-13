@@ -1,0 +1,109 @@
+#main{
+	width:100%;
+	height:auto;
+}
+
+body{
+	margin: 0px;
+	scrollbar-base-color:#bae87c;
+ 	scrollbar-arrow-color:#FFFFFF;
+ 	scrollbar-shadow-color:#c1ea8b;
+ 	padding:0px;
+ 	margin:auto;
+ 	text-align:center;
+ 	background-color:#A3CFEC;
+}
+
+#top{
+	width:100%;
+	height:60px;
+	background-color: green;
+}
+
+#bottom{
+	width:100%;
+	height:auto !important; 
+}
+
+#left{
+	width:15%;
+	height:91%;
+	float: left;
+	background-color:#A3CFEC;
+}
+
+#right{
+	width:85%;
+	height:auto;
+	background-color: #fff;
+	z-index: 3;
+	float: right;
+}
+
+dl.bitem dt {
+  background:url(../images/menubg.jpg) ;
+  height:30px;
+  line-height:30px;
+  text-align:center;
+  cursor:pointer;
+  width:100%;
+}
+
+dl.bitem dd {
+  padding:3px 3px 3px 3px;
+  background-color:#fff;
+}
+
+.fllct
+{
+	float:left;
+	text-align:left;
+	width:90%;
+}
+
+.flrct
+{
+	padding-top:3px;
+	float:left;
+}
+
+div.items
+{
+	line-height:26px;
+	background:url(../images/arr4.gif) no-repeat 10px 9px;
+}
+
+span.items
+{
+	padding:10px 0px 10px 22px;
+	background:url(../images/arr4.gif) no-repeat 10px 12px;
+}
+
+ul {
+  padding-top:3px;
+}
+
+li {
+  height:26px;
+  text-align: left;
+}
+
+div {
+	padding:0px;
+	margin:0px;
+}
+
+dl.bitem {
+	width:75%;
+	margin:0px 0px 5px 4px;
+}
+
+.sitemu li {
+	padding:0px 0px 0px 22px;
+	line-height:24px;
+	background:url(../images/arr4.gif) no-repeat 10px 9px;
+}
+
+#left a:link{
+	text-decoration: none;
+}

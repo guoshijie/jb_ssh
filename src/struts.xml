@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.custom.i18n.resources"  value="struts2"></constant>
+	<!-- 当struts的配置文件修改后,系统是否自动重新加载该文件,默认值为false(生产环境下使用),开发阶段最好打开 -->
+	<constant name="struts.configuration.xml.reload" value="true"></constant>
+	<!-- 该属性指定需要Struts 2处理的请求后缀，该属性的默认值是action，即所有匹配*.action的请求都由Struts2处理。
+    	如果用户需要指定多个请求后缀，则多个后缀之间以英文逗号（,）隔开。 -->
+	<constant name="struts.action.extension" value="do,action"/>
+	
+	
+	<package name="default" extends="struts-default" namespace="/">
+		
+		<!-- 自定义返回类型 -->
+		<result-types>
+			<result-type name="chart"  class="org.apache.struts2.dispatcher.ChartResult" />
+		</result-types>
+		
+		<global-results>
+			<result name="success">/jb_index.jsp</result>
+		</global-results>
+		
+		<!-- **************************************************前台action   begin****************************************************** -->
+		<!-- 点击首页后刷新application中的数据，即首页数据 -->
+		<action name="index" class="com.jb.action.IndexAction">
+			<result name="success">/jb_index.jsp</result>
+		</action>
+		<!-- 前台用户注册 -->
+		<action name="register" class="com.jb.action.UserAction" method="addUser">
+			<result name="success">/jb_registerOK.jsp</result>
+			<result name="error">/jb_register.jsp</result>
+		</action>
+		<!-- 前台用户登录 -->
+		<action name="login" class="com.jb.action.LoginAction" method="login">
+			<result name="error">/jb_login.jsp</result>
+		</action>		
+		<!-- 前台用户退出 -->
+		<action name="quit" class="com.jb.action.QuitAction" method="quit"></action>
+		<!-- 验证是否有此用户名 -->
+		<action name="hasUser" class="com.jb.action.UserAction" method= "hasUser"></action>
+		<!-- 前台显示商品详细信息 -->
+		<action name="goodsDetails" class="com.jb.action.GoodsAction" method="getGoodsById">
+			<result name="success">/jb_goodsdetails.jsp</result>
+		</action>
+		<!-- 前台用户收藏商品 -->
+		<action name="collectGoods" class="com.jb.action.CollectAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">goodsDetails</param>
+				<param name="gid">${goods.gid}</param>
+			</result>
+		</action>
+		<!-- 前台查询登录用户所收藏的所有商品 -->
+		<action name="getCollectListByPage" class="com.jb.action.CollectAction" method="getCollectListByPage">
+			<result name="success">/jb_collect.jsp</result>
+		</action>
+		<!-- 前台取消收藏某一商品 -->
+		<action name="deleteOneCollect" class="com.jb.action.CollectAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getCollectListByPage</param>
+				<param name="pageNow">${page.pageNow}</param>
+			</result>
+		</action>
+		<!-- 前台批量删除所收藏的商品 -->
+		<action name="deleteCollects" class="com.jb.action.CollectAction" method="deleteCollects">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getCollectListByPage</param>
+				<param name="pageNow">${page.pageNow}</param>
+			</result>
+		</action>
+		<!-- 前台添加收货地址 -->
+		<action name="addAddress" class="com.jb.action.AddressAction" method="addAddress">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getAddress</param>
+				<param name="meg_address">${param.meg_address}</param>
+			</result>
+		</action>
+		<!-- 前台查看当前登录用户的所有收货地址 -->
+		<action name="getAddress" class="com.jb.action.AddressAction" method="getAllAddress">
+			<result name="success">/jb_myAdress.jsp</result>
+		</action>
+		<!-- 前台删除指定的收货地址 -->
+		<action name="delAddress" class="com.jb.action.AddressAction" method="delAddress">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getAddress</param>
+			</result>
+			<result name="error" type="redirectAction">
+				<param name="actionName">getAddress</param>
+				<param name="meg">${#request.meg}</param>
+			</result>
+		</action>
+		<!-- 前台设置默认的收货地址 -->
+		<action name="setDefaultAddress" class="com.jb.action.AddressAction" method="setDefaultAddress">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getAddress</param>
+			</result>
+		</action>
+		<!-- 前台添加商品到购物车 -->
+		<action name="addGoodsToCart" class="com.jb.action.CartAction">
+			<result name="success" type="chain">
+				<param name="actionName">goodsDetails</param>
+				<param name="gid">${goods.gid}</param>
+			</result>
+			<result name="error">/jb_login.jsp</result>
+		</action>
+		<action name="addGoodsToCartByAjax" class="com.jb.action.CartAction">
+			<result name="success">/jb_cart.jsp</result>
+		</action>
+		<!-- 前台从购物车Session里减去一个商品 -->
+		<action name="cutGoodsToCart" class="com.jb.action.CartAction" >
+			<result name="success">/jb_cart.jsp</result>
+		</action>
+		<!-- 从购物车中删除某商品 -->
+		<action name="delGoodsFormCart" class="com.jb.action.CartAction" method="delGoodsFromCart">
+			<result name="success">/jb_cart.jsp</result>
+		</action>
+		<!-- 从购物车中批量删除某商品 -->
+		<action name="delBatchGoodsFromCart" class="com.jb.action.CartAction" method="delBatchGoodsFromCart">
+			<result name="success">/jb_cart.jsp</result>
+		</action>
+		<!-- 跳转到jb_cart_02.jsp所用到的action -->
+		<action name="settleAccounts" class="com.jb.action.CartAction" method="settleAccounts">
+			<result name="success">/jb_cart_02.jsp</result>
+		</action>
+		<!-- 前台结账，下单 -->
+		<action name="placeAnOrder" class="com.jb.action.OrderAction" method="placeAnOrder">
+			<result name="success">/jb_cart_03.jsp</result>
+			<result name="error">/jb_cartError.jsp</result>
+		</action>
+		<!-- 查询当前登录用户的所有订单,并分页显示 -->
+		<action name="obtainAllOrdersByUser" class="com.jb.action.OrderAction" method="obtainAllOrdersByUser">
+			<result>/jb_myorders.jsp</result>
+			<result name="error">/jb_noOrders.jsp</result>
+		</action>
+		<!-- 前台用户帐户充值 -->
+		<action name="recharge" class="com.jb.action.UserAction" method="recharge">
+			<result>/jb_recharge.jsp</result>
+		</action>
+		<!-- 前台查询将要评价的item -->
+		<action name="searchItemDiscuss" class="com.jb.action.DiscussAction" method="searchItemDiscuss">
+			<result>/jb_discuss.jsp</result>
+		</action>
+		<action name="discussGoods" class="com.jb.action.DiscussAction" method="discussGoods">
+			<result>/jb_discussOK.jsp</result>
+		</action>
+		<!-- 前台分页显示商品评论 -->
+		<action name="discussByPage" class="com.jb.action.DiscussAction">
+			<result>/jb_goodsDiscuss.jsp</result>
+		</action>
+		<!-- 前台跳转到所有商品所用到的action -->
+		<action name="searchGoods" class="com.jb.action.GoodsAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">multiCondition</param>
+			</result>
+		</action>
+		<!-- 前台多条件查询商品 -->
+		<action name="multiCondition" class="com.jb.action.ConditionAction" method="showGoodsByConditions">
+			<result name="success">/jb_goodsSearch.jsp</result>
+		</action>
+		<!-- 前台首页搜索action -->
+		<action name="searches" class="com.jb.action.SearchAction" method="execute">
+		</action>
+		<!-- 前台商品详情页点击立即购买 -->
+		<action name="buyNow" class="com.jb.action.CartAction" method="buyNow">
+			<result name="success">/jb_cart_02.jsp</result>
+		</action>
+		<!-- 前台查询当前用户的详细信息 -->
+		<action name="queryCurUserDetails" class="com.jb.action.UserAction" method="queryCurUserDetails">
+			<result name="success">/jb_userDetails.jsp</result>
+		</action>
+		<!-- 前台修改用户信息 -->
+		<action name="updateUserInfo" class="com.jb.action.UserAction" method="updateUserInfo">
+			<result name="success">/jb_userDetails.jsp</result>
+		</action>
+		<!-- 前台定单回收站 -->
+		<action name="ordersRecycle" class="com.jb.action.OrderAction" method="ordersRecycle">
+			<result name="success">/jb_ordersRecycled.jsp</result>
+			<result name="error">/jb_ordersRecycled.jsp</result>
+		</action>
+		<!-- 前台订单回收站恢复订单，即将定单的status设为1 -->
+		<action name="putawayOrders" class="com.jb.action.OrderAction" >
+			<result name="success" type="redirectAction">
+				<param name="actionName">ordersRecycle</param>
+			</result>
+		</action>
+		<!-- 前台批量删除订单 -->
+		<action name="delOrders" class="com.jb.action.OrderAction" method="delOrdersPatch">
+			<result name="success" type="redirectAction">
+				<param name="actionName">obtainAllOrdersByUser</param>
+			</result>
+		</action>
+		<!-- 前台定单回收站彻底删除订单，即将定单的status设为2 -->
+		<action name="delRelOrders" class="com.jb.action.OrderAction" method="delRelOrders">
+			<result name="success" type="redirectAction">
+				<param name="actionName">ordersRecycle</param>
+			</result>
+		</action>
+		<!-- **************************************************前台action   end****************************************************** -->
+		
+		
+		
+		
+		
+		<!-- **************************************************后台action   begin****************************************************** -->
+		<!-- 后台用户登录 -->
+		<action name="adminLogin" class="com.jb.action.LoginAction" method="adminLogin">
+			<result name="success">/admin/index.jsp</result>
+			<result name="error">/admin/login.jsp</result>
+		</action>		
+		<!-- 后台用户退出 -->
+		<action name="adminQuit" class="com.jb.action.QuitAction" method="quit">
+			<result name="success">/admin/login.jsp</result>
+		</action>
+		<!-- 后台分页显示用户 -->
+		<action name="getUserByPage" class="com.jb.action.UserAction" method="getUserByPage">
+			<result name="success">/admin/userManager.jsp</result>
+		</action>
+		<!-- 后台根据用户名模糊查询用户 -->
+	<!-- 	<action name="searchUsers" class="com.jb.action.UserAction" method="searchUserByName">
+			<result name="success">/admin/userManager.jsp</result>
+		</action>	 -->
+		<!-- 后台管理员添加用户 -->
+		<action name="adminAddUser" class="com.jb.action.UserAction" method="addUser">
+			<result name="success">/admin/addUser.jsp</result>
+		</action>
+		<!-- 后台管理员删除用户 -->	
+		<action name="adminDelUser" class="com.jb.action.UserAction" method="delUser">
+			<result name="success" type="redirectAction">getUserByPage</result>
+		</action>
+		<!-- 后台根据id查询用户，即用户修改功能 -->
+		<action name="searchUserById" class="com.jb.action.UserAction" method="searchUserById">
+			<result name="success">/admin/userInfo.jsp</result>
+		</action>
+		<!-- 后台管理员修改用户 -->
+		<action name="modifyUser" class="com.jb.action.UserAction" method="modityUser">
+			<result name="success" type="redirectAction">getUserByPage</result>
+		</action>
+		<!-- 后台添加商品类型 -->
+		<action name="getType" class="com.jb.action.CategoryAction" method="getType">
+			<result name="success">/admin/addType.jsp</result>
+		</action>
+		<!-- 后台添加商品类型 -->
+		<action name="addType" class="com.jb.action.CategoryAction" method="addType">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getType</param>
+				<param name="meg">${param.meg}</param>
+			</result>
+			<result name="input">/admin/error.jsp</result>
+		</action>
+		<!-- 后台显示商品类别信息 -->
+		<action name="getTypeInfo" class="com.jb.action.CategoryAction" method="getType">
+			<result name="success">/admin/typeManage.jsp</result>
+		</action>
+		<!-- 后台显示子类信息 -->
+		<action name="getTypeById" class="com.jb.action.CategoryAction" method="getTypeById">
+			<result name="success">/admin/typeManage.jsp</result>
+		</action>
+		<!-- 后台上传商品 -->
+		<action name="addGoods" class="com.jb.action.GoodsAction" method="addGoods">
+			<result name="success">/admin/goodspup.jsp</result>
+		</action>
+		<!-- 后台添加通告 -->
+		<action name="addNews" class="com.jb.action.NewsAction" method="addNews">
+			<result name="success">/admin/addNews.jsp</result>
+		</action>
+		<!-- 后台通告管理，分页显示 -->
+		<action name="newsManage" class="com.jb.action.NewsAction" method="newsManage">
+			<result name="success">/admin/notificationManage.jsp</result>
+		</action>
+		<!-- 后台删除某一个通告 -->
+		<action name="delNews" class="com.jb.action.NewsAction" method="delNews">
+			<result name="success" type="redirectAction">
+				<param name="actionName">newsManage</param>
+			</result>
+		</action>
+		<!-- 后台查询某一通告的详细信息 -->
+		<action name="queryNewsById" class="com.jb.action.NewsAction" method="queryNewsById">
+			<result name="success">/admin/updateNews.jsp</result>
+		</action> 
+		<!-- 后台更新通告 -->
+		<action name="updateNews" class="com.jb.action.NewsAction" method="updateNews">
+			<result name="success">/admin/updateNews.jsp</result>
+		</action>
+		<!-- 后台批量删除通告 -->
+		<action name="delNewsPatch" class="com.jb.action.NewsAction" method="delNewsPatch">
+			<result name="success" type="redirectAction">
+				<param name="actionName">newsManage</param>
+			</result>
+		</action>
+		<!-- 后台跳转到商品管理，查询出所有商品，并分页显示 -->
+		<action name="manageAllGoods" class="com.jb.action.GoodsAction">
+			<result name="success">/admin/goodsManager.jsp</result>
+		</action>
+		<!-- 后台商品下架 -->
+		<action name="removeOffShelves" class="com.jb.action.GoodsAction" method="removeOffShelves">
+			<result name="success" type="redirectAction">
+				<param name="actionName">manageAllGoods</param>
+			</result>
+		</action>
+		<!-- 后台批量上架选中商品 -->
+		<action name="putaway" class="com.jb.action.GoodsAction" method="putaway">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getStorageGoodsByPage</param>
+			</result>
+		</action>
+		<!-- 后台查询仓库中的商品，并分页显示 -->
+		<action name="getStorageGoodsByPage" class="com.jb.action.GoodsAction" method="getStorageGoodsByPage">
+			<result name="success">/admin/goodsStorage.jsp</result>
+		</action>
+		<!-- 后台商品搜索 -->
+		<action name="searchGoodsByAdmin" class="com.jb.action.GoodsAction" method="manageAllGoods">
+			<result name="success">/admin/goodsManager.jsp</result>
+		</action>
+		<!-- 后台修改商品信息 -->
+		<action name="adminUpdateGoods" class="com.jb.action.GoodsAction" method="adminUpdateGoods">
+			<result name="success">/admin/goodsInfo.jsp</result>
+		</action>
+		<!-- 后台根据id查询相关商品的详细信息，以备修改 -->
+		<action name="adminGetGoodsById" class="com.jb.action.GoodsAction" method="adminGetGoodsById">
+			<result name="success">/admin/goodsInfo.jsp</result>
+		</action>
+		<!-- 后台点击进货链接后的行为 -->
+		<action name="buyGoods" class="com.jb.action.GoodsAction" method="adminGetGoodsById">
+			<result name="success">/admin/adminBuyGoods.jsp</result>
+		</action>
+		<!-- 后台进货 -->
+		<action name="adminBuyGoods" class="com.jb.action.GoodsAction" method="adminBuyGoods">
+			<result name="success" type="redirectAction">
+				<param name="actionName">buyGoods</param>
+				<param name="gid">${goods.gid}</param>
+				<param name="meg">${#request.meg}</param>
+			</result>
+		</action>
+		<!-- 后台订单管理 -->
+		<action name="orderManageByAdmin" class="com.jb.action.OrderAction" method="orderManageByAdmin">
+			<result name="success">/admin/orderManage.jsp</result>
+		</action>
+		<!-- 后台删除定单搜索关键字 -->
+		<action name="delOrderKeywords" class="com.jb.action.OrderAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">orderManageByAdmin</param>
+				<param name="condition">allOrder</param>
+			</result>
+		</action>
+		<!-- 后台批量删除选中定单 -->
+		<action name="delOrdersPatch" class="com.jb.action.OrderAction" method="delOrdersPatch">
+			<result name="success" type="redirectAction">
+				<param name="actionName">orderManageByAdmin</param>
+				<param name="condition">allOrder</param>
+			</result>
+		</action>
+		<!-- 后台查询所有收藏 -->
+		<action name="adminGetAllCollectByPage" class="com.jb.action.CollectAction" method="adminGetAllCollectByPage">
+			<result name="success">/admin/collectManage.jsp</result>
+		</action>
+		<!-- 后台删除收藏搜索关键字 -->
+		<action name="delCollectKeywords" class="com.jb.action.CollectAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">adminGetAllCollectByPage</param>
+				<param name="condition">allOrder</param>
+			</result>
+		</action>
+		<!-- 负责画图的Action -->
+		<action name="chartAction" class="com.jb.action.ChartAction">
+			<result name="success"  type="chart" >
+				<param name="chart">chart</param>   
+  				<param name="height">400</param>   
+    			<param name="width">700</param> 
+			</result>
+		</action>
+		<!-- **************************************************后台action   end****************************************************** -->
+	</package>
+	
+</struts>    

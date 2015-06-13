@@ -1,0 +1,32 @@
+#itemInfo{
+	width: 100%;
+	height: auto;
+}
+
+#itemTbl{
+	border: 1px solid #eeeeee!important;
+}
+
+#itemTbl a:LINK {
+	color: black;
+	text-decoration: none;
+}
+
+#itemTbl a:VISITED {
+	color: black;
+}
+
+#itemTbl a:HOVER {
+	color: red;
+	text-decoration: underline;
+}
+
+#itemTbl a:ACTIVE {
+	color: blue;
+}
+
+#discussContent{
+	width: 100%;
+	height: auto;
+	margin-top: 15px;
+}

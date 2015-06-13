@@ -1,0 +1,158 @@
+#title{
+	color:#dd0000;
+	text-indent: 2em;
+	width:985px;
+	height: 30px;
+	line-height: 30px;
+	border:1px solid #aaaaaa;
+	border-top: 2px solid #aaaaaa;
+	font-weight: bold;
+}
+
+#content_bottom_title{
+	color:#dd0000;
+	text-indent: 2em;
+	width:983px;
+	height: 30px;
+	line-height: 30px;
+	border-bottom:1px solid #aaaaaa;
+	font-weight: bold;
+}
+
+#content{
+	width:985px;
+	height:406px;
+	border:1px solid #aaaaaa;
+	border-top: none;
+	background-color: #ffffff;
+}
+
+#content_top{
+	width:983px;
+	height:190px;
+	background-color: #ffffff;
+	border-bottom: 1px solid #dddddd;
+}
+
+#content_bottom{
+	width:983px;
+	height:213px;
+	background-color: #ffffff;
+}
+
+#content_top_left{
+	float:left;
+	width:180px;
+	height:170px;
+	background-color: #ffffff;
+	padding: 10px;
+}
+
+#content_top_right{
+	width:775px;
+	height:190px;
+	background-color: #ffffff;
+	margin-left: 205px;
+	margin-right: 0px;
+	border-left: 1px solid #cccccc;
+}
+
+#content_top_right_name{
+	width:760px;
+	height:30px;
+	line-height: 30px;
+	padding-left:15px;
+}
+
+#content_top_right_money{
+	width:760px;
+	height:25px;
+	line-height: 25px;
+	padding-left:15px;
+	font-size: 14px;
+	border-bottom:1px solid #dddddd;
+}
+
+.margin_left{
+	margin-left: 30px;
+}
+
+#content_bottom_goods{
+	width:100%;
+	height:200px;
+	background-color:#ffffff;
+}
+
+#cycleImg a:LINK {
+	text-decoration: none;
+	color: black;
+}
+
+#cycleImg a:VISITED {
+	text-decoration: none;
+	color: black;
+}
+
+#cycleImg a:HOVER {
+	text-decoration: underline;
+	color: red;
+}
+
+#cycleImg a:ACTIVE {
+	text-decoration: underline;
+}
+
+#content_top_right_notion{
+	width:735px;
+	height:94px;
+	background-color: #ffffff;
+	padding:20px;
+	font-size: 14px;
+	color: gray;
+	line-height: 30px;
+}
+
+#content_top_right_notion a:LINK {
+	text-decoration: none;
+	color: gray;
+}
+
+#content_top_right_notion a:VISITED {
+	color:gray;
+	text-decoration: none;
+}
+
+#content_top_right_notion a:HOVER {
+	color:red;
+	text-decoration: underline;
+}
+
+#content_top_right_notion a:ACTIVE {
+	color: blue;
+}
+
+.modifyUserInfo{
+	font-size: 13px;
+}
+
+.modifyUserInfo a:LINK {
+	color: gray;
+	text-decoration: none;
+}
+
+.modifyUserInfo a:VISITED {
+	color: gray;
+}
+
+.modifyUserInfo a:HOVER {
+	color:red;
+	text-decoration: underline;
+}
+
+.modifyUserInfo a:ACTIVE {
+	color: blue;
+}
+
+form{
+	margin: 0px;
+}

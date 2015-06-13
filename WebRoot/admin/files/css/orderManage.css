@@ -1,0 +1,53 @@
+#pageNum{
+	width: 98%;
+	height:40px;
+	margin-top: 0px;
+	text-align: center;
+	font-size: 15px;
+	font-family: Microsoft Yahei;
+}
+	
+#pageNum a:LINK {
+	font-family: Microsoft Yahei;
+	font-size: 15px;
+	text-decoration: underline;
+	color: black;
+}
+
+#pageNum a:VISITED{
+	color: black;
+}
+
+#pageNum a:HOVER{
+	color: red;
+}
+
+#pageNum a:ACTIVE{
+	color: blue;
+}
+
+.pageNow{
+	border: 1px solid black;
+	width:5px;
+	height:5px;
+	padding: 3px 5px;
+	font-size: 15px;
+	background-color: #FFCA7D;
+}
+
+.pageOther{
+	border: 1px solid black;
+	width:5px;
+	height:5px;
+	padding: 3px 5px;
+	font-size: 15px;
+}
+
+#selOrDel{
+	height: 22px;
+	left: 0px;
+	font-size: 16px;
+	padding-top:3px;
+	width: 98%;
+	margin: 0 auto;
+}

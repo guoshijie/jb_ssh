@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+	
+	<!-- 1配置事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- 2 事务的隔离性和传播特性 -->
+	<tx:advice id="txAdvice"  transaction-manager="transactionManager">
+	<!-- propagation 代表事物的传播机制 , isolation 代表事物的隔离级别  -->
+		<tx:attributes>
+			<tx:method name="add*"  propagation="REQUIRED"  isolation="READ_COMMITTED" />
+			<tx:method name="create*"  propagation="REQUIRED"  isolation="READ_COMMITTED" />
+			<tx:method name="remove*"  propagation="REQUIRED"/>
+			<tx:method name="del*"  propagation="REQUIRED"/>
+			<tx:method name="put*"  propagation="REQUIRED"/>
+			<tx:method name="update*"  propagation="REQUIRED"/>
+			<tx:method name="modify*"  propagation="REQUIRED"/>
+			<!-- 只读事物 : read-only="true" 会提高只读事物的速度 -->
+			<tx:method name="*"  propagation="REQUIRED"   read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 配置使用事务的方法 -->
+	<aop:config proxy-target-class="true">
+		<!-- 		execution(* com.jb.buz.*.*(..))||execution(* com.jb.listener.*.*(..))			 -->
+		<aop:pointcut id="transactionMethod" expression="execution(* com.jb.buz.*.*(..))" />
+		<aop:advisor advice-ref="txAdvice"  pointcut-ref="transactionMethod" ></aop:advisor>
+	</aop:config>
+	
+</beans>

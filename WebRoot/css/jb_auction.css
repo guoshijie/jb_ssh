@@ -1,0 +1,168 @@
+body{
+	margin:0px;
+	text-align: center;
+	background-color: #FAF5F4;
+}
+
+.clear{
+	clear:left;
+}
+
+#main{
+	margin:0 auto;
+	width:1000px;
+	height: auto;
+}
+
+#top{
+	width:1000px;
+	height:auto;
+	background-color: #fff;
+}
+
+#top_left{
+	width:225px;
+	height:255px;
+	border:2px solid #E4393C;
+	border-top: none;
+	float: left;
+	background-color: #fff;
+}
+
+#top_left ul{
+	margin: 0;
+	line-height: 40px;
+	padding: 0;
+}
+
+#top_left ul li{
+	height:40px;
+	border: 1px solid #dddddd;
+	border-top: none;
+	list-style: none;
+	position: relative;
+}
+
+#top_left ul li ul{
+	display:none;
+	position: absolute;
+	left: 223px;
+	top:0px;
+	width: 120px;
+	background-color: #ffffff;
+}
+
+a:link{
+	color:#000000;
+	text-decoration: none;
+}
+
+a:visited{
+	color:#000000;
+}
+
+a:hover{
+	color: #dd0000;
+}
+
+a:active{
+	color: #dd0000;
+}
+
+#top_left ul li:hover ul{
+	display: block;
+}
+
+ul li ul li a:hover{
+	color: red;
+	text-decoration: underline;
+}
+
+#top_right{
+	width:742px;
+	height:236px;
+	background-color: #fff;
+	margin-left: 235px;
+	padding: 10px;
+	border-bottom: 1px solid #eeeeee;
+}
+
+#bottom{
+	width:1000px;
+	height:auto;
+	margin-top:5px;
+	background-color: #FAF5F4;
+}
+
+.bottom_block{
+	width:232px;
+	height:315px;
+	background-color: #eeeeee;
+	float:left;
+	margin-right: 10px;	
+	padding: 5px;
+	margin-top: 10px;
+}
+
+.bottom_block_inner{
+	width:230px;
+	height:313px;
+	background-color: #fff;
+	margin:0 auto;
+	border: 1px solid #bbbbbb;
+}
+
+.bottom_block1{
+	width:234px;
+	height:315px;
+	background-color: #eeeeee;
+	float:left;
+	padding: 5px;
+	margin-top: 10px;
+}
+
+.bottom_block_inner_img{
+	width:230px;
+	height:253px;
+	background-color: #fff;
+}
+
+.bottom_block_inner_img1{
+	width:210px;
+	height:60px;
+	background-color: #FBF3F6;
+	line-height: 30px;
+	text-align: left;
+	padding-left: 20px;
+	font-size: 14px;
+	color:#555555;
+}
+
+.bottom_block_inner_img_01{
+	width:210px;
+	height:173px;
+	padding: 10px;
+}
+
+.bottom_block_inner_img_02{
+	width:200px;
+	height:30px;
+	padding-left: 20px;
+	padding-right: 10px;
+	font-size: 14px;
+	text-align: left;
+	background-color: #fff;
+	line-height: 30px;
+}
+
+.bottom_block_inner_img_03{
+	width:200px;
+	height:30px;
+	padding-left: 20px;
+	padding-right: 10px;
+	font-size: 14px;
+	text-align: left;
+	background-color: #fff;
+	line-height: 30px;
+	color: #555555;
+}

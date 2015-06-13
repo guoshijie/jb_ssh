@@ -1,0 +1,186 @@
+body{
+	margin:0px;
+	text-align: center;
+}
+
+#main{
+	margin:0 auto;
+	background-color: #ffffff;
+	width:1200px;
+	height: auto;
+}
+
+#top{
+	width:1198px;
+	height:300px;
+	background-color: #ffffff;
+	border: 1px solid #CCC;
+}
+#bottom{
+	width:1198px;
+	background-color: #ffffff;
+	height: auto;
+	border: 1px solid #CCC;
+	margin-top: 10px;
+}
+
+#left{
+	width:280px;
+	height:280px;
+	background-color: #ffffff;
+	float:left;
+	padding: 10px;
+}
+
+#center_{
+	margin-left:310px;
+	height:300px;
+	width:640px;
+	background-color: #ffffff;
+	text-align: left;
+}
+
+#right{
+	width:238px;
+	height:280px;
+	background-color: #FFF;
+	float: right;
+	padding:0px;
+	margin-right:0px;
+	margin-top:5px;
+	border: 1px solid #CCC;
+	border-right:none;
+	font-size: 15px;
+}
+
+#main img{
+	border: 1px solid #CCC;
+}
+
+#bottom_01{
+	width:1200px;
+	height:598px;
+	background-color: #ffffff;
+	margin-top: 10px;
+}
+
+#bottom_01_left{
+	float:left;
+	width:248px;
+	height:598px;
+	background-color: #ffffff;
+	border: 1px solid #ccc;
+}
+
+#bottom_01_right{
+	width:935px;
+	margin-left:260px;
+	height:598px;
+	background-color: #ffffff;
+	border: 1px solid #ccc;
+}
+
+.bottom_02_details_01_01{
+	width:215px;
+	height:260px;
+	background-color: #ffffff;
+	margin-left: 10px;
+	margin-right:10px;
+	margin-top:10px;
+	text-align: left;
+	padding: 5px;
+	border: 1px solid #dddddd;
+	line-height: 25px;
+}
+
+.bottom_02_details_img_01{
+	width:200px;
+	height:190px;
+	margin-left:11px;
+	background-color: #ffffff;
+}
+
+.bottom_02_goods_name_01{
+	width:210px;
+	height:40px;
+	background-color: #ffffff;
+	font-size: 14px;
+	text-align: left;
+	line-height: 20px;
+	overflow: hidden;
+	text-overflow:ellipsis; 
+}
+
+.bottom_02_goods_name_01 a:LINK{
+	text-decoration: none;
+	color: black;
+}
+
+.bottom_02_goods_name_01 a:VISITED{
+	text-decoration: none;
+	color: black;
+}
+
+.bottom_02_goods_name_01 a:HOVER{
+	text-decoration: underline;
+	color: red;
+}
+
+.bottom_02_goods_name_01 a:ACTIVE{
+	color: blue;
+	text-decoration: none;
+}
+
+.bottom_01_left_title{
+	width:100%;
+	height:25px;
+	background-color: #eeeeee;
+	line-height: 27px;
+	text-align: left;
+}
+
+#bottom_01_left img{
+	border: none;
+}
+
+#estimate{
+	width:100%;
+	height:30px;
+	line-height: 30px;
+	text-align: left;
+}
+
+.estimate_01{
+	margin-left: 30px;
+}
+
+#estimate_details{
+	width:930px;
+	height:500px;
+	background-color: #ffffff;
+}
+
+#center_ a:link{
+	background-image: url("../images/category_all2.gif");
+	color: #ffffff;
+	text-decoration: none;
+	padding: 5px;
+	line-height: 35px;
+}
+
+#center_ a:visited{
+	color:#ffffff;
+}
+
+#center_ a:hover{
+	text-decoration: none;
+	color: #eeeeee;
+}
+
+#center_ a:active{
+	color: #dd0000;
+}
+
+.bottom_02_price_01{
+	margin-top: 10px;
+}

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+
+	<!-- IOC bean -->
+	<bean id="accounts" class="com.jb.pojo.Accounts"></bean>
+	<bean id="address" class="com.jb.pojo.Address"></bean>
+	<bean id="attribute" class="com.jb.pojo.Attribute"></bean>
+	<bean id="cart" class="com.jb.pojo.Cart"></bean>
+	<bean id="category" class="com.jb.pojo.Category"></bean>
+	<bean id="collect" class="com.jb.pojo.Collect"></bean>
+	<bean id="discuss" class="com.jb.pojo.Discuss"></bean>
+	<bean id="goods" class="com.jb.pojo.Goods"></bean>
+	<bean id="groupbuy" class="com.jb.pojo.Groupbuy"></bean>
+	<bean id="items" class="com.jb.pojo.Items"></bean>
+	<bean id="level" class="com.jb.pojo.Level"></bean>
+	<bean id="news" class="com.jb.pojo.News"></bean>
+	<bean id="order" class="com.jb.pojo.Order"></bean>
+	<bean id="stock" class="com.jb.pojo.Stock"></bean>
+	<bean id="user" class="com.jb.pojo.User"></bean>
+	<bean id= "page" class="com.jb.pagination.Page"></bean>
+	
+	<!-- IOC action -->
+	<bean id="indexAction" class="com.jb.action.IndexAction"></bean>
+	<bean id="userAction" class="com.jb.action.UserAction">
+		<property name="user" ref="user"></property>
+		<property name="iUserBuz" ref="iUserBuz"></property>
+		<property name="iLevelBuz" ref="iLevelBuz"></property>
+		<property name="page" ref="page"></property>
+		<property name="pageUtils" ref="pageUtils"></property>
+	</bean>
+	<bean id="loginAction" class="com.jb.action.LoginAction">
+		<property name="user" ref="user"></property>
+		<property name="iUserBuz" ref="iUserBuz"></property>
+		<property name="iCartBuz" ref="iCartBuz"></property>
+		<property name="iItemsBuz" ref="iItemsBuz"></property>
+		<property name="iOrderBuz" ref="iOrderBuz"></property>
+	</bean>
+	<bean id="quitAction" class="com.jb.action.QuitAction"></bean>
+	<bean id="categoryAction" class="com.jb.action.CategoryAction">
+		<property name="category" ref="category"></property>
+		<property name="iCategoryBuz" ref="iCategoryBuz"></property>
+	</bean>
+	<bean id="goodsAction" class="com.jb.action.GoodsAction">
+		<property name="goods" ref="goods"></property>
+		<property name="iGoodsBuz" ref="iGoodsBuz"></property>
+		<property name="user" ref="user"></property>
+		<property name="iCategoryBuz" ref="iCategoryBuz"></property>
+		<property name="iCollectBuz" ref="iCollectBuz"></property>
+		<property name="iDiscussBuz" ref="iDiscussBuz"></property>
+		<property name="page" ref="page"></property>
+		<property name="pageUtils" ref="pageUtils"></property>
+	</bean>
+	<bean id="collectAction" class="com.jb.action.CollectAction">
+		<property name="user" ref="user"></property>
+		<property name="goods" ref="goods"></property>
+		<property name="iCollectBuz" ref="iCollectBuz"></property>
+		<property name="iUserBuz" ref="iUserBuz"></property>
+		<property name="page" ref="page"></property>
+		<property name="pageUtils" ref="pageUtils"></property>
+	</bean>
+	<bean id="addressAction" class="com.jb.action.AddressAction">
+		<property name="address" ref="address"></property>
+		<property name="iAddressBuz" ref="iAddressBuz"></property>
+	</bean>
+	<bean id="cartAction" class="com.jb.action.CartAction">
+		<property name="iGoodsBuz" ref="iGoodsBuz"></property>
+		<property name="iCartBuz" ref="iCartBuz"></property>
+		<property name="iAddressBuz" ref="iAddressBuz"></property>
+	</bean>
+	<bean id="orderAction" class="com.jb.action.OrderAction">
+		<property name="iOrderBuz" ref="iOrderBuz"></property>
+		<property name="iCartBuz" ref="iCartBuz"></property>
+		<property name="iUserBuz" ref="iUserBuz"></property>
+		<property name="page" ref="page"></property>
+		<property name="pageUtils" ref="pageUtils"></property>
+	</bean>
+	<bean id="discussAction" class="com.jb.action.DiscussAction">
+		<property name="iDiscussBuz" ref="iDiscussBuz"></property>
+		<property name="iItemsBuz" ref="iItemsBuz"></property>
+		<property name="discuss" ref="discuss"></property>
+		<property name="iGoodsBuz" ref="iGoodsBuz"></property>
+		<property name="page" ref="page"></property>
+		<property name="pageUtils" ref="pageUtils"></property>
+	</bean>
+	<bean id="conditionAction" class="com.jb.action.ConditionAction">
+		<property name="goods" ref="goods"></property>
+		<property name="iGoodsBuz" ref="iGoodsBuz"></property>
+		<property name="iCategoryBuz" ref="iCategoryBuz"></property>
+		<property name="page" ref="page"></property>
+		<property name="pageUtils" ref="pageUtils"></property>
+		<property name="iConditionBuz" ref="iConditionBuz"></property>
+	</bean>
+	<bean id="searchAction" class="com.jb.action.SearchAction">
+		<property name="iCategoryBuz" ref="iCategoryBuz"></property>
+	</bean>
+	<bean id="newsAction" class="com.jb.action.NewsAction">
+		<property name="iNewsBuz" ref="iNewsBuz"></property>
+		<property name="news" ref="news"></property>
+		<property name="page" ref="page"></property>
+		<property name="pageUtils" ref="pageUtils"></property>
+	</bean>
+	<bean id="chartAction" class="com.jb.action.ChartAction">
+		<property name="iChartBuz" ref="iChartBuz"></property>
+	</bean>
+	
+	
+	
+	<!-- IOC buz -->
+	<bean id="iLevelBuz"  class="com.jb.buz.Impl.ILevelBuzImpl">
+		<property name="iLevelDao" ref="iLevelDao"></property>
+	</bean>
+	<bean id="iUserBuz"  class="com.jb.buz.Impl.IUserBuzImpl">
+		<property name="iUserDao" ref="iUserDao"></property>
+		<property name="iLevelDao" ref="iLevelDao"></property>
+	</bean>
+	<bean id="iCategoryBuz" class="com.jb.buz.Impl.ICategoryBuzImpl">
+		<property name="iCategoryDao" ref="iCategoryDao"></property>
+	</bean>
+	<bean id="iGoodsBuz" class="com.jb.buz.Impl.IGoodBuzImpl">
+		<property name="iGoodsdao" ref="iGoodsDao"></property>
+		<property name="iDiscussDao" ref="iDiscussDao"></property>
+		<property name="iCategoryDao" ref="iCategoryDao"></property>
+	</bean>
+	<bean id="iCollectBuz" class="com.jb.buz.Impl.ICollectBuzImpl">
+		<property name="iCollectDao" ref="iCollectDao"></property>
+		<property name="collect" ref="collect"></property>
+	</bean>
+	<bean id="iAddressBuz" class="com.jb.buz.Impl.IAddressBuzImpl">
+		<property name="iAddressDao" ref="iAddressDao"></property>
+		<property name="iOrderDao" ref="iOrderDao"></property>
+	</bean>
+	<bean id="iCartBuz" class="com.jb.buz.Impl.ICartBuzImpl">
+		<property name="iCartDao" ref="iCartDao"></property>
+		<property name="iItemsDao" ref="iItemsDao"></property>
+	</bean>
+	<bean id="iOrderBuz" class="com.jb.buz.Impl.IOrderBuzImpl">
+		<property name="iAddressDao" ref="iAddressDao"></property>
+		<property name="order" ref="order"></property>
+		<property name="iOrderDao" ref="iOrderDao"></property>
+		<property name="iItemsDao" ref="iItemsDao"></property>
+		<property name="iDiscussDao" ref="iDiscussDao"></property>
+		<property name="iGoodsDao" ref="iGoodsDao"></property>
+		<property name="iUserDao" ref="iUserDao"></property>
+	</bean>
+	<bean id="iItemsBuz" class="com.jb.buz.Impl.IItemsBuzImpl">
+		<property name="iItemsDao" ref="iItemsDao"></property>
+	</bean>
+	<bean id="iDiscussBuz" class="com.jb.buz.Impl.IDiscussBuzImpl">
+		<property name="iDiscussDao" ref="iDiscussDao"></property>
+	</bean>
+	<bean id="iConditionBuz" class="com.jb.buz.Impl.IConditionBuzImpl"></bean>
+	<bean id="iNewsBuz" class="com.jb.buz.Impl.INewsBuzImpl">
+		<property name="iNewsDao" ref="iNewsDao"></property>
+	</bean>
+	<bean id="iChartBuz" class="com.jb.buz.Impl.IChartBuzImpl">
+		<property name="iGoodsDao" ref="iGoodsDao"></property>
+	</bean>
+	
+	
+	<!-- IOC dao -->
+	<bean id="iUserDao"  class="com.jb.dao.Impl.IUserDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="iLevelDao"  class="com.jb.dao.Impl.ILevelDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>	
+	</bean>
+	<bean id="iCategoryDao" class="com.jb.dao.Impl.ICategoryDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="iGoodsDao" class="com.jb.dao.Impl.IGoodsDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="iCollectDao" class="com.jb.dao.Impl.ICollectDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="iAddressDao" class="com.jb.dao.Impl.IAddressDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="iOrderDao" class="com.jb.dao.Impl.IOrderDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="iItemsDao" class="com.jb.dao.Impl.IItemDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="iCartDao" class="com.jb.dao.Impl.ICartDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="iDiscussDao" class="com.jb.dao.Impl.IDiscussDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="iNewsDao" class="com.jb.dao.Impl.INewsDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	
+	<!-- IOC pagination -->
+	<bean id= "pageUtils" class="com.jb.pagination.PageUtils">
+		<property name="page" ref="page"></property>
+	</bean>
+</beans>

@@ -1,0 +1,16 @@
+a:LINK {
+	color: black;
+	font-size: 14px;
+}
+
+a:VISITED {
+	color: black;
+}
+
+a:HOVER {
+	color: red;
+}
+
+a:ACTIVE {
+	color: blue;
+}

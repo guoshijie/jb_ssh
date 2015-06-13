@@ -1,0 +1,53 @@
+#main{
+	width:1200px;
+	height:450px;
+	background-color: #eeeeee;
+	margin-left: auto;
+	margin-right: auto;
+	background-image: url("../images/login_bg.jpg");
+	position: relative;
+}
+
+#loginDiv{
+	position:absolute;
+	border:1px solid #dddddd;
+	width:439px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color:#ffffff;
+	top: 80px;
+	left:400px;
+}
+
+#loginDiv a:link{
+	text-decoration: none;
+	color:#555555;
+}
+
+#loginDiv a:visited{
+	color:#555555;
+}
+
+#loginDiv a:hover{
+	color:#dd0000;
+}
+
+body{
+	margin: 0px;
+	text-align: center;
+}
+
+.ys01{
+	width:155px;
+	height:30px;
+	border:1px solid #aaaaaa;
+}
+
+#label_01,#label_02{
+	width: 110px;
+	height:30px;
+	line-height: 30px;
+	background-color: #fff;
+	font-size: 13px;
+	color: red;
+}

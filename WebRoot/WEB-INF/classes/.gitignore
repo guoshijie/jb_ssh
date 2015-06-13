@@ -1,0 +1,5 @@
+/applicationContext-bean.xml
+/applicationContext-db.xml
+/applicationContext-transaction.xml
+/com/
+/struts.xml
