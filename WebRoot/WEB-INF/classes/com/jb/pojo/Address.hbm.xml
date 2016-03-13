@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.jb.pojo.Address" table="address" catalog="jb_sh" lazy="false">
+        <id name="aid" type="java.lang.Integer">
+            <column name="aid" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="user" class="com.jb.pojo.User" fetch="select">
+            <column name="uid">
+                <comment>用户id</comment>
+            </column>
+        </many-to-one>
+        <property name="receiver" type="java.lang.String">
+            <column name="receiver" length="45">
+                <comment>收货人</comment>
+            </column>
+        </property>
+        <property name="tel" type="java.lang.String">
+            <column name="tel" length="45">
+                <comment>收货人电话</comment>
+            </column>
+        </property>
+        <property name="province" type="java.lang.String">
+            <column name="province" length="16">
+                <comment>省份</comment>
+            </column>
+        </property>
+        <property name="city" type="java.lang.String">
+            <column name="city" length="20">
+                <comment>城市</comment>
+            </column>
+        </property>
+        <property name="county" type="java.lang.String">
+            <column name="county" length="20">
+                <comment>县</comment>
+            </column>
+        </property>
+        <property name="street" type="java.lang.String">
+            <column name="street" length="100">
+                <comment>街道门牌号（详细地址）</comment>
+            </column>
+        </property>
+        <property name="flag" type="java.lang.Integer">
+            <column name="flag" length="2">
+                <comment>1:默认 0：不默认</comment>
+            </column>
+        </property>
+        <set name="orders" inverse="true">
+            <key>
+                <column name="aid">
+                    <comment>收获地址id</comment>
+                </column>
+            </key>
+            <one-to-many class="com.jb.pojo.Order" />
+        </set>
+    </class>
+</hibernate-mapping>

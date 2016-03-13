@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.jb.pojo.Order" table="order" catalog="jb_sh">
+        <id name="oid" type="java.lang.Integer">
+            <column name="oid" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="cart" class="com.jb.pojo.Cart" fetch="select" unique="true" outer-join="false">
+            <column name="cid" not-null="false">
+                <comment>购物车id</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="address" class="com.jb.pojo.Address" fetch="select">
+            <column name="aid">
+                <comment>收获地址id</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="user" class="com.jb.pojo.User" fetch="select">
+            <column name="uid">
+                <comment>用户id</comment>
+            </column>
+        </many-to-one>
+        <property name="num" type="java.lang.String">
+            <column name="num" length="100">
+                <comment>订单编号</comment>
+            </column>
+        </property>
+        <property name="otime" type="java.lang.String">
+            <column name="otime" length="20">
+                <comment>下单时间</comment>
+            </column>
+        </property>
+        <property name="total" type="java.lang.Double">
+            <column name="total" precision="22" scale="0">
+                <comment>总价</comment>
+            </column>
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="status">
+                <comment>0:已删除   1：存在</comment>
+            </column>
+        </property>
+        <set name="itemses" inverse="true" lazy="false">
+            <key>
+                <column name="oid">
+                    <comment>定单id</comment>
+                </column>
+            </key>
+            <one-to-many class="com.jb.pojo.Items" />
+        </set>
+    </class>
+</hibernate-mapping>

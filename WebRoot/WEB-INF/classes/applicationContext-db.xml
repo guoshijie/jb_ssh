@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- 我们不会将这个Bean进行实例化，class属性中定义了PropertyPlaceholderConfigurer类，可以告诉Spring我们实际上要注册一个properties文件-->  
+	<bean id="propertyFileConfigForDB"   
+	    class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
+	    <property name="location" value="/WEB-INF/classes/com/jb/properties/DBConfig.properties"></property>  
+	</bean>  
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="${MYSQL_DRIVERCLASSNAME}">
+		</property>
+		<property name="url" value="${MYSQL_CONN_URL}"></property>
+		<property name="username" value="${MYSQL_USERNAME}"></property>
+		<property name="password" value="${MYSQL_PASSWORD}"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.format_sql">false</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/jb/pojo/Discuss.hbm.xml</value>
+				<value>com/jb/pojo/Items.hbm.xml</value>
+				<value>com/jb/pojo/Accounts.hbm.xml</value>
+				<value>com/jb/pojo/Stock.hbm.xml</value>
+				<value>com/jb/pojo/Address.hbm.xml</value>
+				<value>com/jb/pojo/Cart.hbm.xml</value>
+				<value>com/jb/pojo/Order.hbm.xml</value>
+				<value>com/jb/pojo/Level.hbm.xml</value>
+				<value>com/jb/pojo/Goods.hbm.xml</value>
+				<value>com/jb/pojo/Category.hbm.xml</value>
+				<value>com/jb/pojo/Attribute.hbm.xml</value>
+				<value>com/jb/pojo/Groupbuy.hbm.xml</value>
+				<value>com/jb/pojo/News.hbm.xml</value>
+				<value>com/jb/pojo/User.hbm.xml</value>
+				<value>com/jb/pojo/Collect.hbm.xml</value>
+			</list>
+		</property>
+		
+		</bean>
+		
+</beans>
